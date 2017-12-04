@@ -1,0 +1,130 @@
+*{
+	padding: 0;
+	margin:0;
+}
+
+.GameContainer {
+	width: 600px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.GameContainer .Scoreboard {
+	margin-left: 10px;	
+
+}
+
+.GameContainer .StartNewGame {
+	padding: 6px 12px;
+	background: #669;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+
+	position: absolute;
+	right: 10px;
+	top: 10px;
+
+	border-radius: 3px;
+
+	outline: 0;
+
+	box-shadow: 0 1px 1px #666;
+	transition: box-shadow 50ms ease-in-out;
+}
+
+.GameContainer .StartNewGame:active {
+	box-shadow: 0 0 0 2px #6666999e;
+}
+
+.GameContainer .Cards {
+	font-size: 0;
+	width: 100%;
+}
+
+.GameContainer .Cards .Card {
+	position: relative;
+	display: inline-block;
+	width: calc((100% - 80px) / 4);
+	height: 0;
+	padding-bottom: calc((100% - 80px) / 4);
+
+	margin: 10px;
+
+	background: #999;
+
+	border-radius: 5px;
+
+	transition: transform 600ms ease-in-out;
+
+    transform-style: preserve-3d;
+    transform-origin: center;
+
+    transform: rotateY(-180deg);
+}
+
+.GameContainer .Cards .Card > div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+    backface-visibility: hidden;
+	background: transparent no-repeat center;
+	background-size: contain;
+}
+
+.GameContainer .Cards .Card.active {
+    transform: rotateY(0deg);
+}
+
+.GameContainer .Cards .Card.deactivated {
+	opacity: .6;
+}
+
+.GameContainer .Cards .Card .aries {
+	background-image: url("../signs/aries.svg");
+}
+
+.GameContainer .Cards .Card .aquarius {
+	background-image: url("../signs/aquarius.svg");
+}
+
+.GameContainer .Cards .Card .cancer {
+	background-image: url("../signs/cancer.svg");
+}
+
+.GameContainer .Cards .Card .capricon {
+	background-image: url("../signs/capricon.svg");
+}
+
+.GameContainer .Cards .Card .gemini {
+	background-image: url("../signs/gemini.svg");
+}
+
+.GameContainer .Cards .Card .leo {
+	background-image: url("../signs/leo.svg");
+}
+
+.GameContainer .Cards .Card .libra {
+	background-image: url("../signs/libra.svg");
+}
+
+.GameContainer .Cards .Card .pisces {
+	background-image: url("../signs/pisces.svg");
+}
+
+.GameContainer .Cards .Card .scorpion {
+	background-image: url("../signs/scorpion.svg");
+}
+
+.GameContainer .Cards .Card .sigittarius {
+	background-image: url("../signs/sigittarius.svg");
+}
+
+.GameContainer .Cards .Card .taurus {
+	background-image: url("../signs/taurus.svg");
+}
+
+.GameContainer .Cards .Card .virgo {
+	background-image: url("../signs/virgo.svg");
+}
