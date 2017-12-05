@@ -24,6 +24,7 @@ var $scoreboard = $gameContainer.find('.Scoreboard');
 var $cards = $gameContainer.find('.Cards');
 var foundcard=0;
 var steps=0;
+var beginTime=null;
 
 function createCardByIndex(index){
 	var el = document.createElement("div");
@@ -82,6 +83,7 @@ function isGameOver(){
 }
 
 function gameOver(){
+	beginTime=null;
 	swal({
 		title: 'Game Over!',
 		html: "Your Score: " + score + "<br/>Best Score: " + bestScore +"<br/>Seen cards: " + steps,
@@ -106,6 +108,7 @@ function gameOver(){
 			);
 		}
 	})
+
 }
 
 function timestamp(){
@@ -115,12 +118,14 @@ function timestamp(){
 $cards.on('click', '.Card:not(.deactivated)', function(){
 	var $target = $(this);
 	var clickedIndex = $target.index();
-
+	
+	if (beginTime===null) {
+		beginTime=timestamp();
+	}
+	
 	if(lastClickedIndex === clickedIndex) {
 		$target.removeClass('active');
 		lastClickedIndex = null;
-		steps++;
-		$scoreboard.find('.Steps').text(steps);
 		return ;
 	}
 
@@ -130,9 +135,9 @@ $cards.on('click', '.Card:not(.deactivated)', function(){
 			runFoundTimeout(lastClickedIndex, clickedIndex);
 		} else {
 			runMistakeTimeout(lastClickedIndex, clickedIndex);
+		steps++;
+		$scoreboard.find('.Steps').text(steps);
 
-			steps++;
-			$scoreboard.find('.Steps').text(steps);
 		}
 
 
@@ -151,7 +156,9 @@ function applyFoundData(){
 	var foundTime = timestamp();
 	score += (foundTime - lastFoundTime) < timeRange ? score : 10;
 	lastFoundTime = foundTime;
+
 	Foundcard++;
+
 	if(bestScore < score) {
 		bestScore = score;
 	}
@@ -181,6 +188,15 @@ function runMistakeTimeout(i1, i2) {
 		$cards.children().eq(i2).removeClass('active');
 	}, 600);
 }
+setInterval(function (){
+	if(beginTime===null){
+		$scoreboard.find('.Time').text(0);
+	}
+	else{
+		var a=timestamp()-beginTime;
+		$scoreboard.find('.Time').text(a);
 
+	}
+} , 1000);
 
 runGame();
