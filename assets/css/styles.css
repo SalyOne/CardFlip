@@ -4,16 +4,22 @@
 }
 
 .GameContainer {
-	width: 600px;
+	width:600px;
 	margin: 0 auto;
 	position: relative;
 }
 
 .GameContainer .Scoreboard {
 	margin-left: 10px;	
-
+	position: relative;
 }
 
+.GameContainer .Scoreboard .Score{
+	padding-right: 60px;	
+}
+.GameContainer .Scoreboard .BestScore{
+	padding-right: 28px;	
+}
 .GameContainer .StartNewGame {
 	padding: 6px 12px;
 	background: #669;
@@ -23,7 +29,7 @@
 
 	position: absolute;
 	right: 10px;
-	top: 10px;
+	top: 6px;
 
 	border-radius: 3px;
 

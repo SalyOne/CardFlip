@@ -22,6 +22,8 @@ var bestScore = 0;
 var $gameContainer = $('.GameContainer');
 var $scoreboard = $gameContainer.find('.Scoreboard');
 var $cards = $gameContainer.find('.Cards');
+var foundcard=0;
+var steps=0;
 
 function createCardByIndex(index){
 	var el = document.createElement("div");
@@ -71,6 +73,7 @@ function runGame(){
 	showBoard();
 
 	$scoreboard.find('.Score').text(score = 0);
+	$scoreboard.find('.Foundcard').text(Foundcard=0);
 };
 
 function isGameOver(){
@@ -80,7 +83,7 @@ function isGameOver(){
 function gameOver(){
 	swal({
 		title: 'Game Over!',
-		html: "Your Score: " + score + "<br/>Best Score: " + bestScore,
+		html: "Your Score: " + score + "<br/>Best Score: " + bestScore +"<br/>Seen cards: " + steps,
 		type: 'success',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
@@ -124,7 +127,11 @@ $cards.on('click', '.Card:not(.deactivated)', function(){
 			runFoundTimeout(lastClickedIndex, clickedIndex);
 		} else {
 			runMistakeTimeout(lastClickedIndex, clickedIndex);
+
+		steps++;
+		$scoreboard.find('.Steps').text(steps)
 		}
+
 
 		lastClickedIndex = null;
 	} else {
@@ -132,7 +139,8 @@ $cards.on('click', '.Card:not(.deactivated)', function(){
 	}
 
 	$target.addClass('active');
-});
+
+	});
 
 $gameContainer.on('click', '.StartNewGame', runGame);
 
@@ -140,13 +148,14 @@ function applyFoundData(){
 	var foundTime = timestamp();
 	score += (foundTime - lastFoundTime) < timeRange ? score : 10;
 	lastFoundTime = foundTime;
-	
+	Foundcard++;
 	if(bestScore < score) {
 		bestScore = score;
 	}
 
 	$scoreboard.find('.Score').text(score);
 	$scoreboard.find('.BestScore').text(bestScore);
+	$scoreboard.find('.Foundcard').text(Foundcard);
 }
 
 function isMistake(index){
