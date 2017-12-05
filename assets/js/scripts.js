@@ -74,6 +74,7 @@ function runGame(){
 
 	$scoreboard.find('.Score').text(score = 0);
 	$scoreboard.find('.Foundcard').text(Foundcard=0);
+	$scoreboard.find('.Steps').text(steps=0);
 };
 
 function isGameOver(){
@@ -118,6 +119,8 @@ $cards.on('click', '.Card:not(.deactivated)', function(){
 	if(lastClickedIndex === clickedIndex) {
 		$target.removeClass('active');
 		lastClickedIndex = null;
+		steps++;
+		$scoreboard.find('.Steps').text(steps);
 		return ;
 	}
 
@@ -128,8 +131,8 @@ $cards.on('click', '.Card:not(.deactivated)', function(){
 		} else {
 			runMistakeTimeout(lastClickedIndex, clickedIndex);
 
-		steps++;
-		$scoreboard.find('.Steps').text(steps)
+			steps++;
+			$scoreboard.find('.Steps').text(steps);
 		}
 
 
