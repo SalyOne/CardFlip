@@ -8,12 +8,18 @@
     font-weight: bold;
     font-style: normal;
 }
+.back{
+	background-color: coral;
+}
 *{
 	padding: 0;
 	margin:0;
 	font-family: 'Karla';
 }
+body{
 
+	background-color:rgba(200,200,250,1);
+}
 .GameContainer {
 	width:600px;
 	margin: 0 auto;
@@ -23,14 +29,26 @@
 .GameContainer .Scoreboard {
 	margin-left: 10px;	
 	position: relative;
+	color: #363636;
+	padding: 10px 0;
 }
+.TextContainer{
+	display: inline-block;
+	margin-right: 20px;
+}
+.TextContainer{
 
+}
+/*
 .GameContainer .Scoreboard .Score{
 	padding-right: 60px;	
 }
 .GameContainer .Scoreboard .BestScore{
-	padding-right: 28px;	
+	padding-right: 22px;	
 }
+.GameContainer .Scoreboard .Foundcard{
+	padding-right: 28px;	
+}*/
 .GameContainer .StartNewGame {
 	padding: 6px 12px;
 	background: #669;
@@ -40,7 +58,7 @@
 
 	position: absolute;
 	right: 10px;
-	top: 6px;
+	top: 20px;
 
 	border-radius: 3px;
 
