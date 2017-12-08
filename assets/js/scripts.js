@@ -72,7 +72,9 @@ function showBoard(){
 function runGame(){
 	resetBoard();
 	showBoard();
-
+	
+	beginTime = null;
+	
 	$scoreboard.find('.Score').text(score = 0);
 	$scoreboard.find('.Foundcard').text(Foundcard=0);
 	$scoreboard.find('.Steps').text(steps=0);
